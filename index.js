@@ -67,5 +67,5 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-Client.login(/*process.env.TOKEN*/"ODE1NTg2NjY0MTI2NzQyNTI5.YDukRQ.GeyvMaCxbVTDHUWx-tc0HlG6QZU");
+Client.login(process.env.TOKEN);
 
