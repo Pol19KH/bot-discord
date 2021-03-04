@@ -2,6 +2,8 @@ const { randomInt } = require("crypto");
 const Discord = require("discord.js");
 const { get } = require("http");
 
+const Client = new Discord.Client;
+
 const prefixe = "!";
 const nom = "innocent.exe";
 
@@ -23,13 +25,13 @@ var tabBlague = ['C \'est un sucre qui rentre dans un café et plouf !', 'Dans l
 const tailleBlague = tabBlague.length;
 blague = 'KONO DIO DA';
 
-const Client = new Discord.Client;
 
 Client.on("ready", () => {
     console.log("bot oppérationnel");
 });
 
 Client.on("message", message => {
+    gif=getRandomInt(200);
 
     switch (message.content) {
 
@@ -40,11 +42,11 @@ Client.on("message", message => {
             break;
 
         case (prefixe + nom):
-            message.channel.send("**Bonjour !** *(ou bonsoir...)* \n Je m'appelle **" + nom + "** ! \n Je suis là dans l'unique but d'être gentil et de partager de la bonne humeur dans ce monde cruel :blush: \n Si vous le souhaitez, vous pouvez invoquer une blague en utilisant `!drole`. \n Je ne garantis pas le fou rire car mon créateur n'est pas très fort dans ce domaine, mais je vais faire de mon mieux pour réhausser le niveau :clown:");
+            message.channel.send("**Bonjour !** *(ou bonsoir...)* <:deadinside:788865157166137354> \n Je m'appelle **" + nom + "** ! \n Je suis là dans l'unique but d'être gentil et de partager de la bonne humeur dans ce monde cruel :blush: \n Si vous le souhaitez, vous pouvez invoquer une blague en utilisant `!drole`. \n Je ne garantis pas le fou rire car mon créateur n'est pas très fort dans ce domaine, mais je vais faire de mon mieux pour réhausser le niveau :clown:");
             break;
 
-        case (ApplicationCache.name):
-            message.reply("Oui ?");
+        case (""+Client.user.discriminator):
+            message.channel.send("Oui ?");
             break;
 
 
@@ -53,14 +55,17 @@ Client.on("message", message => {
             emoji = tabEmoji[random];
             message.react(emoji);
             break;
-
     }
 
+    if (gif==1){
+        let url = `https://tenor.com/view/cute-adorable-charming-gif-13798021`;
+        message.channel.send(url);
+}
 });
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-Client.login(process.env.TOKEN);
+Client.login(/*process.env.TOKEN*/"ODE1NTg2NjY0MTI2NzQyNTI5.YDukRQ.GeyvMaCxbVTDHUWx-tc0HlG6QZU");
 
