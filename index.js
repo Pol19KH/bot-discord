@@ -53,7 +53,7 @@ Client.on("message", message => {
             message.channel.send("**Bonjour !** *(ou bonsoir...)* <:deadinside:788865157166137354> \n Je m'appelle **" + nom + "** ! \n Je suis là dans l'unique but d'être gentil et de partager de la bonne humeur dans ce monde cruel :blush: \n Si vous le souhaitez, vous pouvez invoquer une blague en utilisant `!drole`. \n Je ne garantis pas le fou rire car mon créateur n'est pas très fort dans ce domaine, mais je vais faire de mon mieux pour réhausser le niveau :clown:");
             break;
 
-        case (prefixe + "stop"):
+        case (prefixe + "shut-on"):
             if (reactions){
                 message.reply("À vos ordres senpai !");
                 reactions=false;
@@ -62,7 +62,7 @@ Client.on("message", message => {
             }
             break;
 
-        case (prefixe + "start"):
+        case (prefixe + "shut-off"):
             if (!reactions){
                 message.reply("YAAAAA !");
                 reactions=true;
