@@ -6,6 +6,7 @@ const Client = new Discord.Client;
 
 const prefixe = "!";
 const nom = "innocent.exe";
+let reactions = true;
 
 var tabEmoji = ['731207159110434927', '751521008787259472', '751516261325996204', '751515834035208303', '751514762290004028', '751526875796603050', '690918475895668806',
     '748613567867125972', '751527523573039215', '742687402266460194', '781257461507686430', '715530169745539082', '715530435215491183', '715530310548193360', '715530512122511430', '776217617924620318',
@@ -31,7 +32,14 @@ Client.on("ready", () => {
 });
 
 Client.on("message", message => {
-    gif=getRandomInt(200);
+    gif = getRandomInt(150);
+
+
+    if (reactions) {
+        random = getRandomInt(tailleEmoji);
+        emoji = tabEmoji[random];
+        message.react(emoji);
+    }
 
     switch (message.content) {
 
@@ -45,22 +53,30 @@ Client.on("message", message => {
             message.channel.send("**Bonjour !** *(ou bonsoir...)* <:deadinside:788865157166137354> \n Je m'appelle **" + nom + "** ! \n Je suis là dans l'unique but d'être gentil et de partager de la bonne humeur dans ce monde cruel :blush: \n Si vous le souhaitez, vous pouvez invoquer une blague en utilisant `!drole`. \n Je ne garantis pas le fou rire car mon créateur n'est pas très fort dans ce domaine, mais je vais faire de mon mieux pour réhausser le niveau :clown:");
             break;
 
-        case (""+Client.user.discriminator):
-            message.channel.send("Oui ?");
+        case (prefixe + "stop"):
+            if (reactions){
+                message.reply("À vos ordres senpai !");
+                reactions=false;
+            }else{
+                message.reply("YAMETE KUDASAI :rage: ");
+            }
             break;
 
-
-        default:
-            random = getRandomInt(tailleEmoji);
-            emoji = tabEmoji[random];
-            message.react(emoji);
+        case (prefixe + "start"):
+            if (!reactions){
+                message.reply("YAAAAA !");
+                reactions=true;
+            }else{
+                message.reply("Je réagis déjà à vos messages senpai :eyes: ");
+            }
             break;
     }
 
-    if (gif==1){
+
+    if (gif == 1) {
         let url = `https://tenor.com/view/cute-adorable-charming-gif-13798021`;
         message.channel.send(url);
-}
+    }
 });
 
 function getRandomInt(max) {
