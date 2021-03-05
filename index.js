@@ -58,7 +58,7 @@ Client.on("message", message => {
                 message.reply("À vos ordres senpai !");
                 reactions=false;
             }else{
-                message.reply("YAMETE KUDASAI :rage: ");
+                message.reply("Yamete kudasai :rage: ");
             }
             break;
 
